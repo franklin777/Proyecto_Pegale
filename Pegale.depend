@@ -335,7 +335,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1435378161 source:c:\users\peña arita\desktop\pegale\main.cpp
+1435386335 source:c:\users\peña arita\desktop\pegale\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
@@ -343,6 +343,7 @@
 	<iostream>
 	<cstdlib>
 	<SDL_mixer.h>
+	<sstream>
 
 1376156426 c:\mingw_dev_lib\include\sdl2\sdl_mixer.h
 	"SDL_stdinc.h"

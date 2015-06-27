@@ -6,7 +6,7 @@
 #include <iostream>
 #include<cstdlib>
 #include<SDL_mixer.h>
-
+#include <sstream>
 using namespace std;
 SDL_Window* window;
 SDL_Renderer* renderer;
@@ -19,12 +19,21 @@ Mix_Chunk *ganar = NULL;
 bool estado_menu=true;
 char opc='m';
 char ani='n';
+//int intentos;
 int numero, temp;
 int numpres;
+
+
 void perdiste()
 {
+    int entero = 10;
+    std::string mensaje = "Lo sentimos ha perdido, el correcto era:  ";
+    mensaje+= static_cast<std::ostringstream*>(&(std::ostringstream() << numero))->str();
+  //  intentos--;
     Mix_PlayChannel( -1, perder, 0 );
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"Pegale","Lo siento, has perdido :/ ",NULL);
+    cout<<mensaje<<endl;
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"Pegale", mensaje.c_str() ,NULL);
+//    if(intentos==0)
     opc='m';
 }
 void ganaste()
@@ -223,6 +232,7 @@ int main(int argc, char* args[])
                 }
                 if(Event.key.keysym.sym == SDLK_2 && opc=='j') //Nivel 2
                 {
+                   // intentos=2;
                     SDL_RenderCopy(renderer,nivel2, NULL, &rect_nivel2);
                     numero=1+rand()%(6-1);;
                     cout<<numero<<endl;
@@ -401,7 +411,7 @@ int main(int argc, char* args[])
          rect_nube2.x--;
           rect_raton.x++;
         SDL_RenderPresent(renderer);
-        SDL_Delay(7);
+        SDL_Delay(9);
      }//FIN WHILE PRINCIPAL
     return 0;
 }
